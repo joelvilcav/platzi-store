@@ -10,15 +10,18 @@ import {
   HttpCode,
   ParseIntPipe,
 } from '@nestjs/common';
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
 import { UsersService } from '../services/users.service';
 import { CreateUserDto, UpdateUserDto } from '../dtos/users.dto';
 
+@ApiTags('Users')
 @Controller('users')
 export class UsersController {
   constructor(private userService: UsersService) {}
 
   @Get()
+  @ApiOperation({ summary: 'List of Users' })
   getUsers() {
     return this.userService.findAll();
   }

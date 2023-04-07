@@ -6,11 +6,12 @@ import {
   IsPositive,
 } from 'class-validator';
 
-import { PartialType } from '@nestjs/mapped-types';
+import { PartialType, ApiProperty } from '@nestjs/swagger';
 
 export class CreateProductDto {
   @IsString()
   @IsNotEmpty()
+  @ApiProperty({ description: `User's name` })
   readonly name: string;
 
   @IsString()
